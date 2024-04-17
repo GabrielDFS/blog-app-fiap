@@ -5,6 +5,7 @@ import { client } from "../util/createClient";
 
 function PageHome() {
     const [posts, setPosts] = useState([]);
+    const [categories, setCategories] = useState([]);
     const [feedbackPosts, setFeedbackPosts] = useState('Carregando posts...');
 
     const getPosts = async () => {
@@ -21,8 +22,26 @@ function PageHome() {
         }
     };
 
+    const getCategories = async () => {
+        try {
+            const response = await client.getEntries({
+                content_type: 'fiapBlogCategory'
+            });
+    
+            setCategories(response.items);
+        } catch (error) {
+            console.log('Erro ao carregar categorias', error);
+        }
+    }
+
+    // Criar um método getCategories do tipo async
+    // chamar ele dentro do useEffect
+    // criar um estado para armazenar as categorias
+    // listar as categorias na tela (usando o UL - LI)
+
     useEffect(() => {
         getPosts();
+        getCategories();
     }, []); // ciclo de vida - no onLoad do componente
     
     return (
@@ -53,9 +72,11 @@ function PageHome() {
                         <h2 className="my-3">Categorias</h2>
 
                         <ul>
-                            <li>Nome da categoria</li>
-                            <li>Nome da categoria</li>
-                            <li>Nome da categoria</li>
+                            {categories.map((category) => (
+                                <li key={category.sys.id}>
+                                    {category.fields.categoryTitle}
+                                </li>
+                            ))}
                         </ul>
                     </aside>
                 </div>
