@@ -1,4 +1,6 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+
 import Post from "../components/Post";
 import LayoutDefault from "../layout/LayoutDefault";
 import { client } from "../util/createClient";
@@ -64,9 +66,9 @@ function PageHome() {
                             />
                         ))}
 
-                        <a href="#" className="btn btn-primary">
+                        <Link to="/" className="btn btn-primary">
                             Ver todos os posts
-                        </a>
+                        </Link>
                     </main>
                     <aside className="col-md-4">
                         <h2 className="my-3">Categorias</h2>
