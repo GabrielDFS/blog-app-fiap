@@ -4,7 +4,7 @@ function Header() {
   return (
     <nav className="navbar bg-body-tertiary">
       <div className="container-fluid">
-        <Link to="/" className="navbar-brand">My Blog</Link>
+        <Link to="/" className="navbar-brand">GABRIEL DE FREITA SILVA - RM 450630</Link>
       </div>
     </nav>
   );

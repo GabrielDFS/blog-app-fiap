@@ -66,7 +66,7 @@ function PageHome() {
                             />
                         ))}
 
-                        <Link to="/" className="btn btn-primary">
+                        <Link to="/post/list" className="btn btn-primary">
                             Ver todos os posts
                         </Link>
                     </main>
